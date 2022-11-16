@@ -1,0 +1,35 @@
+.apply-button {
+  background-color: #384564;
+}
+
+.employment-type {
+  background: rgba(161, 177, 219, 0.317343);
+  /* Functional/Option border */
+
+  border: 1px solid rgba(85, 105, 158, 0.3);
+  border-radius: 8px;
+}
+
+.benefits {
+  background: rgba(255, 207, 0, 0.15);
+  border: 1px solid #ffcf00;
+  border-radius: 8px;
+}
+
+.return-button {
+  background: rgba(56, 69, 100, 0.14);
+  color: #3a4562;
+}
+.pictures {
+  overflow-x: scroll;
+}
+@media (min-width: 768px) {
+  .pictures {
+    overflow-x: hidden;
+  }
+}
+
+.map {
+  background-image: url("../../../assets/map.png");
+  background-size: contain;
+}

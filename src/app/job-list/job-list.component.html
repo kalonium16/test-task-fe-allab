@@ -1,0 +1,8 @@
+<section class="bg-neutral-100 h-auto">
+  <div *ngFor="let job of jobsList; index as i" class="flex justify-center">
+    <app-job-list-item
+      [jobItem]="job"
+      class="md:w-9/12 w-full mx-2 mt-2 drop-shadow-lg"
+    ></app-job-list-item>
+  </div>
+</section>
