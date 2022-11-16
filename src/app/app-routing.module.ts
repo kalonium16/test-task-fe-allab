@@ -5,12 +5,12 @@ import { JobListComponent } from './job-list/job-list.component';
 
 const routes: Routes = [
   {
-    path: 'jobs',
+    path: 'jobs/:id',
     component: JobListComponent,
   },
-  { path: '', redirectTo: '/jobs', pathMatch: 'full' },
+  { path: '', redirectTo: '/jobs/1', pathMatch: 'full' },
   {
-    path: 'jobs/:id',
+    path: 'job/:id',
     component: JobDetailedComponent,
   },
 ];

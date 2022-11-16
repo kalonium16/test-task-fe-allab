@@ -99,7 +99,9 @@
       <h2 class="font-bold text-3xl">Contacts</h2>
       <hr class="my-2" />
     </div>
-    <div class="bg-black text-slate-100 mx-2 md:mt-2 mt-4 rounded-lg align-top">
+    <div
+      class="bg-black text-slate-100 mx-2 md:mt-2 mt-4 rounded-lg align-top w-80"
+    >
       <div class="px-12 pt-6 pb-6">
         <p class="md:mt-2 mt-0.5">Department name.</p>
         <p>{{ job.name }}</p>
@@ -111,7 +113,7 @@
         <p>{{ job.email }}</p>
       </div>
       <!-- Since google map static API doesn't have a free tier I've used static image to show how it would work. -->
-      <div class="h-44 map rounded-lg">
+      <div class="h-44 map rounded-b-lg">
         <fa-icon [icon]="faLocationDot" class="inset-12 relative"> </fa-icon>
       </div>
     </div>

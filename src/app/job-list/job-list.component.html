@@ -5,4 +5,29 @@
       class="md:w-9/12 w-full mx-2 mt-2 drop-shadow-lg"
     ></app-job-list-item>
   </div>
+  <section class="flex justify-center py-14 items-center">
+    <div
+      class="bg-white border-4 basis-8/12 md:basis-4/12 h-14 rounded-xl flex justify-center items-center"
+    >
+      <fa-icon
+        [icon]="faChevronLeft"
+        class="md:inline hidden mr-4 pr-4 border-r-2 cursor-pointer"
+        (click)="pageDown($event)"
+      ></fa-icon>
+      <div class="flex">
+        <a
+          *ngFor="let item of numbers; let i = index"
+          class="mr-4"
+          [routerLink]="'/jobs/' + item"
+          [routerLinkActive]="GetActiveLinkStyle(item)"
+          >{{ item }}</a
+        >
+      </div>
+      <fa-icon
+        [icon]="faChevronRight"
+        class="md:inline hidden mr-2 pl-4 border-l-2 cursor-pointer"
+        (click)="pageUp($event)"
+      ></fa-icon>
+    </div>
+  </section>
 </section>
