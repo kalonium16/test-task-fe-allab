@@ -31,14 +31,7 @@ export class JobsService {
       );
   }
 
-  // setJobs() {
-  //   for (let i = 0; i < 20; i++) {
-  //     this.jobsList.push(emptyJob());
-  //   }
-  // }
-
   getJobsByPage(page = 1) {
-    console.log(this.jobsList.slice(15 * (page - 1), 15 * page));
     return this.jobsList.slice(15 * (page - 1), 15 * page);
   }
 

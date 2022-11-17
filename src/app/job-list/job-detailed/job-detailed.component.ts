@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { JobsService } from 'src/app/services/jobs.service';
 import { emptyJob } from 'src/app/types/types';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-job-detailed',
   templateUrl: './job-detailed.component.html',
@@ -26,13 +26,22 @@ export class JobDetailedComponent implements OnInit {
   faLocationDot = faLocationDot;
   faChevronLeft = faChevronLeft;
   timePassed = 0;
-  constructor(private route: ActivatedRoute, private jobs: JobsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private jobs: JobsService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
       this.selectedId = param['id'];
     });
     this.job = this.jobs.getJobById(this.selectedId)[0];
+    this.getDaysAfterPost();
+    this.job.description.replace('\n', '<br>');
+  }
+
+  private getDaysAfterPost() {
     this.timePassed = Math.floor(
       (new Date().getTime() - new Date(this.job.createdAt).getTime()) /
         1000 /
@@ -40,6 +49,9 @@ export class JobDetailedComponent implements OnInit {
         60 /
         24
     );
-    this.job.description.replace('\n', '<br>');
+  }
+
+  backClicked() {
+    this.location.back();
   }
 }

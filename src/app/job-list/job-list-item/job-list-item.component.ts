@@ -17,6 +17,10 @@ export class JobListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.getDaysAfterPost();
+  }
+
+  private getDaysAfterPost() {
     this.timePassed = Math.floor(
       (new Date().getTime() - new Date(this.jobItem.createdAt).getTime()) /
         1000 /

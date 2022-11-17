@@ -11,21 +11,21 @@
     >
       <fa-icon
         [icon]="faChevronLeft"
-        class="md:inline hidden mr-4 pr-4 border-r-2 cursor-pointer"
+        class="md:inline hidden mr-4 pr-8 border-r-2 cursor-pointer"
         (click)="pageDown($event)"
       ></fa-icon>
       <div class="flex">
         <a
-          *ngFor="let item of numbers; let i = index"
+          *ngFor="let item of pages; let i = index"
           class="mr-4"
           [routerLink]="'/jobs/' + item"
-          [routerLinkActive]="GetActiveLinkStyle(item)"
+          routerLinkActive="font-bold"
           >{{ item }}</a
         >
       </div>
       <fa-icon
         [icon]="faChevronRight"
-        class="md:inline hidden mr-2 pl-4 border-l-2 cursor-pointer"
+        class="md:inline hidden mr-2 pl-8 border-l-2 cursor-pointer"
         (click)="pageUp($event)"
       ></fa-icon>
     </div>

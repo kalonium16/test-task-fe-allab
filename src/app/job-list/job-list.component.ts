@@ -17,7 +17,7 @@ export class JobListComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   currentPage = 1;
   lastPage = 1;
-  numbers: number[] = [];
+  pages: number[] = [];
   constructor(
     private jobs: JobsService,
     private route: ActivatedRoute,
@@ -26,20 +26,42 @@ export class JobListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
-      this.currentPage = param['id'];
+      this.currentPage = +param['id'];
     });
-    this.lastPage = Math.ceil(this.jobs.getMaxJobs() / 15);
-    for (let index = 1; index < this.lastPage; index++) {
-      this.numbers.push(index);
-    }
+
+    this.setPages();
 
     this.jobsList = this.jobs.getJobsByPage(this.currentPage);
+
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
   }
-  GetActiveLinkStyle(page: number) {
-    return 'font-bold';
+
+  //setting array of pages for pagination
+  private setPages() {
+    this.lastPage = Math.ceil(this.jobs.getMaxJobs() / 15);
+    let startPage = this.currentPage - 4;
+    let endPage = this.currentPage + 4;
+
+    if (startPage <= 0) {
+      startPage = 1;
+      endPage = this.currentPage + 8;
+      if (endPage > this.lastPage) {
+        endPage = this.lastPage;
+      }
+      for (let index = startPage; index <= endPage; index++) {
+        this.pages.push(index);
+      }
+    } else {
+      this.pages.push(1);
+      if (endPage > this.lastPage) {
+        endPage = this.lastPage;
+      }
+      for (let index = startPage; index <= endPage; index++) {
+        this.pages.push(index);
+      }
+    }
   }
 
   public pageDown(event: Event) {
